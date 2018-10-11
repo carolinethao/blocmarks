@@ -1,0 +1,15 @@
+<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">All Blocmarks</h1>
+  <% if user_signed_in? %>
+    <%= link_to "Add Topic", new_topic_path, :class => 'btn btn-sm btn-outline-secondary' %>
+  <% end %>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <% @topics.each do |topic| %>
+      <p>#<%= link_to topic.title.downcase, topic_path(topic.id), class: "lead" %></p>
+      <% topic.bookmarks %>
+    <% end %>
+  </div>
+</div>
