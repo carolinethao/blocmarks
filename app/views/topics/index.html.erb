@@ -8,8 +8,30 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <% @topics.each do |topic| %>
-      <p>#<%= link_to topic.title.downcase, topic_path(topic.id), class: "lead" %></p>
-      <% topic.bookmarks %>
+      <p><%= link_to topic.title.downcase, topic_path(topic.id), class: "lead" %></p>
+      <div class="container">
+        <div class="row">
+          <% topic.bookmarks[0..3].each do |bookmark| %>
+            <div class="col-md-3">
+              <div class="card mb-3 shadow-sm">
+                <%= link_to image_tag("//image.thum.io/get/#{bookmark.url}", class: "card-img-top", alt: "Thumbnail [100%x225]", style: "height: 225px; width: 100%; display: block;" ), bookmark.url, target: "_blank" %>
+                <div class="card-body">
+                  <p class="text-left">
+                    <small><%= bookmark.url.remove("http://", "https://", "www.") %></small>
+                  </p>
+                  <% if user_signed_in? %>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
