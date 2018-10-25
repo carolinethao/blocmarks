@@ -1,4 +1,5 @@
 class Bookmark < ApplicationRecord
+  belongs_to :user, optional: true
   belongs_to :topic
   validates :url, length: { minimum: 1 }
   before_validation :format_url
