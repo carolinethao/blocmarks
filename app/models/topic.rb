@@ -3,7 +3,7 @@ class Topic < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   validates :title, length: { minimum: 1 }, format: { with: /\A[a-zA-Z]+\z/ }
 
-  after_validation :format_topic
+  before_save :format_topic
 
   def format_topic
     self.title = "##{self.title}"

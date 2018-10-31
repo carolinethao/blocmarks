@@ -22,9 +22,7 @@
               </p>
               <div class="d-flex justify-content-between align-items-center">
                 <% if user_signed_in? %>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
-                  </div>
+                <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
                   <% if policy(bookmark).destroy? %>
                   <a class="nav-link pull-right" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">...</a>
                   <div class="dropdown-menu">
