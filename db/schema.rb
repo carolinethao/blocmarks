@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_165316) do
   end
 
   create_table "likes", force: :cascade do |t|
+    t.integer "value"
     t.integer "bookmark_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
